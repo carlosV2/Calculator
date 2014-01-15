@@ -79,6 +79,7 @@
         /**
          * Function to parse the expression and get the operations' tree
          * 
+         * @throws EmptyExpressionException If the expression is empty
          * @throws NonMatchingBracketsException If the brackets are not matched
          * @throws NonExistingFunctionException If the function does not exists
          * @throws NonExistingConstantException If the constant does not exists
@@ -87,6 +88,11 @@
          */
         public function parse()
         {
+            // Check for empty expression
+            if ($this->expression === '') {
+                throw new EmptyExpressionException();
+            }
+
             // Count openning and closing brackets
             $openning_brackets = substr_count($this->expression, '(');
             $closing_brackets = substr_count($this->expression, ')');
@@ -133,7 +139,7 @@
             }
 
             // Compose the operations' tree
-            $this->brackets[] = new Bracket();
+            $this->brackets = array(new Bracket());
 
             // Set some flags
             $bracket_empty = true;
