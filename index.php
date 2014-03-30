@@ -21,7 +21,7 @@
         } catch(EvaluationException $e) {
             $e->showIssue();
         } catch(Exception $e) {
-            echo 'Ooops, something terrible happened... try again';
+            echo 'Ooops, something terrible happened... try again!';
         }
 
         echo PHP_EOL;
